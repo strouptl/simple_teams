@@ -12,7 +12,7 @@ module SimpleTeams
 
     def url
       if team.present? and team.members.include? recipient
-        team_url(team, :subdomain => "app", :host => ENV['DOMAIN_NAME'])
+        "/teams/#{team.id}"
       end
     end
 
@@ -22,7 +22,7 @@ module SimpleTeams
 
     # Objects
     def team
-      Teams::Team.find_by(id: params[:team_id])
+      Team.find_by(id: params[:team_id])
     end
 
     def user

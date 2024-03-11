@@ -1,5 +1,6 @@
 module SimpleTeams
   class BulkInvitationsNotification < ApplicationNotification
+
     param :team_id, :user_id, :team_name, :user_name, :invitation_names
 
     def message
@@ -11,7 +12,9 @@ module SimpleTeams
     end
 
     def url
-      team_url(team, :subdomain => "app", :host => ENV['DOMAIN_NAME']) if team.present?
+      if team.present? and team.members.include? recipient
+        "/teams/#{team.id}"
+      end
     end
 
     def link_text
@@ -20,7 +23,7 @@ module SimpleTeams
 
     # Objects
     def team
-      Teams::Team.find_by(id: params[:team_id])
+      Team.find_by(id: params[:team_id])
     end
 
     def user
