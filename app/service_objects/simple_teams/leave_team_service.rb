@@ -25,7 +25,7 @@ module SimpleTeams
     end
 
     def team
-      @team ||= Teams::Team.find(team_id)
+      @team ||= SimpleTeams::Team.find(team_id)
     end
 
     def membership
@@ -42,7 +42,7 @@ module SimpleTeams
 
     def generate_notification
       recipients = team.members.to_a << user
-      Teams::Memberships::LeftNotification.with(
+      SimpleTeams::Memberships::LeftNotification.with(
         :team_id => team.id,
         :member_id => user.id,
         :user_id => user.id,
