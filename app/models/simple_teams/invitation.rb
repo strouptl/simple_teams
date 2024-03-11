@@ -12,7 +12,7 @@ module SimpleTeams
     # callbacks
     before_validation :format_email
     before_create :generate_token
-    before_create :set_expiration
+    before_create :set_expires_at
     after_create :send_invitation_notification
     after_update :send_invitation_notification, :if => :saved_change_to_email?
 
@@ -34,12 +34,12 @@ module SimpleTeams
 
     def reset_invitation_token
       generate_token
-      set_expiration
+      set_expires_at
       self.save
     end
 
     def resend_invitation_notification(options = {})
-      if Time.now > expiration - self.class.expiration_window + 1.day
+      if Time.now > expires_at - self.class.expiration_window + 1.day
         reset_invitation_token
       end
       send_invitation_notification(options)
@@ -59,7 +59,7 @@ module SimpleTeams
       self.token = SecureRandom.hex(32)
     end
 
-    def set_expiration
+    def set_expires_at
       self.expires_at = Time.now + self.class.expiration_window
     end
 
