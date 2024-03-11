@@ -26,11 +26,7 @@ module SimpleTeams
             :user_name => current_user.full_name
           ).deliver_later(@team.members)
 
-          if @team.standalone_team?
-            redirect_to team_path(@team), :notice => "You have accepted the invitation to '#{@team.name}.'"
-          else
-            redirect_to url_for(@team.teamable), :notice => "You have accepted the invitation to the '#{@team.name}' #{@team.teamable.class.model_name.human}."
-          end
+          redirect_to url_for(@team.teamable), :notice => "You have accepted the invitation to the '#{@team.name}' #{@team.teamable.class.model_name.human}."
         else
           render :new
         end

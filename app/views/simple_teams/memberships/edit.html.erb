@@ -1,13 +1,9 @@
 <div class="centered-content-template">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <% if @team.standalone_team? %>
-        <li class="breadcrumb-item"><a href="<%= team_path(@team) %>"><%= @team.name %></a></li>
-      <% else %>
-        <li class="breadcrumb-item"><a href="<%= url_for(@team.teamable.class) %>"><%= @team.teamable.class.model_name.human(count: 2) %></a></li>
-        <li class="breadcrumb-item"><a href="<%= url_for(@team.teamable) %>"><%= @team.name %></a></li>
-        <li class="breadcrumb-item"><a href="<%= team_path(@team) %>">Permissions</a></li>
-      <% end %>
+      <li class="breadcrumb-item"><a href="<%= url_for(@team.teamable.class) %>"><%= @team.teamable.class.model_name.human(count: 2) %></a></li>
+      <li class="breadcrumb-item"><a href="<%= url_for(@team.teamable) %>"><%= @team.name %></a></li>
+      <li class="breadcrumb-item"><a href="<%= team_path(@team) %>">Permissions</a></li>
       <li class="breadcrumb-item active" aria-current="page">Edit Member</li>
     </ol>
   </nav>
