@@ -3,8 +3,8 @@ module SimpleTeams::MemberObject
 
   included do
     has_many :team_memberships, :class_name => "SimpleTeams::Membership", :foreign_key => :member_id, :dependent => :destroy
-    has_many :teams, :through => :team_memberships
-    has_many :team_members, :through => :teams, :source => :members
+    has_many :teams, :through => :team_memberships, :class_name => "SimpleTeams::Team"
+    has_many :team_members, :through => :teams, :source => :members, :class_name => "User"
   end
 
   def member_of_team?(team)

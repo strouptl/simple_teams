@@ -8,8 +8,6 @@ module SimpleTeams::TeamObject
 
     after_create :generate_team
 
-    delegate :members, :to => :team
-
     def self.team_object?
       true
     end
