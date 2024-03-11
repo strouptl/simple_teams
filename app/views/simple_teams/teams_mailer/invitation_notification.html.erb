@@ -1,0 +1,9 @@
+<% if @invitation.inviter.present? %>
+  <p><%= @invitation.inviter.full_name %> has invited you to the "<%= @name %>" <%= @resource_name %>.</p>
+<% else %>
+  <p>You have been invited to the "<%= @name %>" <%= @resource_name %>.</p>
+<% end %>
+
+<p>Use the link below to view this invitation:</p>
+
+<p><%= link_to @invitation_url, @invitation_url %></p>

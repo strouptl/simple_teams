@@ -1,0 +1,17 @@
+<%= simple_form_for(@service_object, :url => (%w"new create".include?(params[:action]) ? team_invitations_path(@team) : team_invitation_path(@team, @invitation)), :method => (%w"new create".include?(params[:action]) ? :post : :put) ) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :email_address %>
+
+    <%= render "teams/memberships/roles_field", :f => f, :prefix => "teams_invitation_forms_update" %>
+
+    <%= render "teams/role_legend_footnote" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => "btn-primary" %>
+    <%= link_to "Cancel", team_path(@team), :class => "btn btn-danger" %>
+  </div>
+<% end %>

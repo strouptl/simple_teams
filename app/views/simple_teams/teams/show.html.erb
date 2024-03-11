@@ -1,0 +1,5 @@
+<% if @team.teamable_type.constantize.respond_to? :teams_template %>
+  <%= render @team.teamable_type.constantize.teams_template, :team => @team, :team_ability => @current_ability %>
+<% else %>
+  <%= render "teams_template", :team => @team %>
+<% end %>

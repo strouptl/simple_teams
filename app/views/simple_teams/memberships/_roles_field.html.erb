@@ -1,0 +1,22 @@
+<fieldset class="form-check-collection mt-4">
+  <legend class="h3">Role</legend>
+  <% @service_object.available_roles.each do |name, id| %>
+    <div class="card mb-3">
+      <div class="card-body">
+        <div class="form-check">
+          <%= radio_button_tag "#{prefix}[role]", name, [name].include?(f.object.role), :class => "form-check-input" %>
+          <%= label_tag "#{prefix}_role_#{name}", :class => "form-check-label w-100" do %>
+            <div class="">
+              <div class="col"><b><%= name.capitalize %></b></div>
+              <div class="col"><%= t "teams.roles.#{name}" %></div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</fieldset>
+
+<% if f.object.errors[:role].present? %>
+  <div class="invalid-feedback d-block"><%= f.object.errors[:role].to_sentence %></div>
+<% end %>

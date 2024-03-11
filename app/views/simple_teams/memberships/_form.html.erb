@@ -1,0 +1,13 @@
+<%= simple_form_for(@service_object, :url => team_membership_path(@team, @membership), :method => :put) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= render "roles_field", :f => f, :prefix => "teams_membership_form" %>
+    <%= render "teams/role_legend_footnote" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => "btn-primary" %>
+    <%= link_to "Cancel", team_path(@team), :class => "btn btn-danger" %>
+  </div>
+<% end %>

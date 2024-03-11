@@ -1,0 +1,65 @@
+<%= simple_form_for(@service_object, :url => (%w"new create".include?(params[:action]) ? team_invitations_path(@team) : team_invitation_path(@team, @invitation)), :method => (%w"new create".include?(params[:action]) ? :post : :put) ) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :single_vs_multiple,
+      :as => :select,
+      :collection => [:single, :multiple, :accessible],
+      :include_blank => false,
+      :input_html => {
+        "data-togglefields" => "single-vs-multiple"
+      }
+    %>
+
+    <div data-togglefields-name="single-vs-multiple" data-togglefields-values='["single"]'>
+      <%= f.input :email_address,
+        :placeholder => "e.g. test@example.com",
+        :error => false,
+        :input_html => { "data-teams-invitations-field" => "single" }
+      %>
+    </div>
+
+    <div data-togglefields-name="single-vs-multiple" data-togglefields-values='["multiple"]'>
+      <%= f.input :select2_email_addresses,
+        :as => :select,
+        collection: @service_object.email_addresses,
+        :include_blank => false,
+        :error => false,
+        :input_html => {:multiple => true, "data-teams-invitations-field" => "multiple" }
+      %>
+    </div>
+
+    <div data-togglefields-name="single-vs-multiple" data-togglefields-values='["accessible"]'>
+      <%= f.input :accessible_email_addresses,
+        :error => false,
+        :placeholder => "e.g. test1@example.com, test2@example.com",
+        :input_html => {"data-teams-invitations-field" => "accessible" },
+        :hint => "Enter email addresses separated by comma."
+      %>
+    </div>
+
+    <small class="form-text text-muted">
+      Begin typing to search for members of other projects that you belong to.
+    </small>
+
+    <% [:email_address, :select2_email_addresses, :accessible_email_addresses].each do |a| %>
+      <% if @service_object.errors[a].present? %>
+        <ul class="invalid-feedback d-block">
+          <% @service_object.errors[a].each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+
+    <%= render "teams/memberships/roles_field", :f => f, :prefix => "teams_invitation_forms_create_combo" %>
+
+    <%= render "teams/role_legend_footnote" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => "btn-primary" %>
+    <%= link_to "Cancel", team_path(@team), :class => "btn btn-danger" %>
+  </div>
+<% end %>

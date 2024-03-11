@@ -1,0 +1,23 @@
+<tr id="<%= dom_id membership %>">
+  <td><%= membership.member.full_name %><%= " (you)" if current_user.membership_for_team(team) == membership %></td>
+  <td><%= membership.role.capitalize %></td>
+  <td>Active</td>
+  <td><%= membership.created_at.to_date %></td>
+  <td>
+    <% unless defined?(hide_controls) and hide_controls %>
+      <% if can? :edit, membership %>
+        <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" id="<%= dom_id membership %>-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
+          Actions
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="<%= dom_id membership %>-dropdown-menu">
+          <%= link_to "Edit", edit_team_membership_path(team, membership), :class => "dropdown-item" %>
+          <% if membership == current_user.membership_for_team(team) %>
+            <%= button_to "Delete", team_leave_team_path(@team), :method => :delete, :class => "btn btn-link dropdown-item", :form => { :data => { "turbo-confirm" => "Are you sure you want to leave this #{ @team.standalone_team? ? "team" : @team.teamable.class.model_name.human }? Removing your own membership will remove all access to this #{ @team.standalone_team? ? "team" : @team.teamable.class.model_name.human }." } } %></li>
+          <% else %>
+            <%= button_to "Delete", team_membership_path(team, membership), :method => :delete, :class => "btn btn-link dropdown-item", :form => { :data => { "turbo-confirm" => "Are you sure you want to delete this member?" } } %>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+  </td>
+</tr>
