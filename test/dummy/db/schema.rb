@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_11_053607) do
     t.integer "inviter_id", null: false
     t.integer "membership_id"
     t.string "email", null: false
-    t.string "role", default: "0", null: false
+    t.integer "role", default: 0, null: false
     t.string "token", null: false
     t.integer "status", default: 0
     t.datetime "sent_at"
@@ -31,7 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_11_053607) do
   create_table "simple_teams_memberships", force: :cascade do |t|
     t.integer "team_id", null: false
     t.integer "member_id", null: false
-    t.integer "role"
+    t.integer "role", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_simple_teams_memberships_on_member_id"
