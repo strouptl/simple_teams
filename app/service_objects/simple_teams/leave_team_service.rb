@@ -1,4 +1,4 @@
-module Teams
+module SimpleTeams
   class LeaveTeamService
     include ActiveModel::Model
 

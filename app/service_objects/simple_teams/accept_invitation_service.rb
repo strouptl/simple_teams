@@ -1,4 +1,4 @@
-module Teams
+module SimpleTeams
   class AcceptInvitationService
     include ActiveModel::Model
 
