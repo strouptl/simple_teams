@@ -15,7 +15,7 @@ SimpleTeams::Engine.routes.draw do
   end
 
   # Team Invitations
-  get "accept_team_invitation/:id", :as => "accept_team_invitation", to: "teams/accept_invitations#new"
-  post "accept_team_invitation/:id", to: "teams/accept_invitations#create"
+  get "accept_team_invitation/:id", :as => "accept_team_invitation", to: "accept_invitations#new"
+  post "accept_team_invitation/:id", to: "accept_invitations#create"
 
 end

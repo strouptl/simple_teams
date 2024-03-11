@@ -1,6 +1,5 @@
 module SimpleTeams
-  class AcceptInvitationsController < ApplicationController
-    skip_before_action :authenticate_user!
+  class AcceptInvitationsController < BaseController
     before_action :set_invitation
     before_action :ensure_invitation_token_is_valid
     before_action :set_team

@@ -1,5 +1,5 @@
 module SimpleTeams
-  class LeaveTeamsController < ApplicationController
+  class LeaveTeamsController < BaseController
     before_action :set_team
     before_action :set_service_object
 

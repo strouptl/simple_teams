@@ -1,5 +1,5 @@
 module SimpleTeams
-  class TeamsController < ApplicationController
+  class TeamsController < BaseController
     before_action :set_team
 
     def show

@@ -1,5 +1,5 @@
 module SimpleTeams
-  class InvitationsController < ApplicationController
+  class InvitationsController < BaseController
     before_action :set_team
     before_action :set_invitation, except: %i[ new create index]
 

@@ -1,5 +1,5 @@
 module SimpleTeams
-  class RelatedMembersController < ApplicationController
+  class RelatedMembersController < BaseController
 
     def index
       if params[:term].present?

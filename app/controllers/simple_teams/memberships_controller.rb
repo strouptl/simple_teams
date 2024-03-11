@@ -1,5 +1,5 @@
 module SimpleTeams
-  class MembershipsController < ApplicationController
+  class MembershipsController < BaseController
     before_action :set_team
     before_action :set_membership, :except => [:index]
 
