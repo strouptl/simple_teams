@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  teamable: one
+  teamable_type: Teamable
+
+two:
+  teamable: two
+  teamable_type: Teamable
