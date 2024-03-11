@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_11_052758) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_11_053006) do
+  create_table "simple_teams_memberships", force: :cascade do |t|
+    t.integer "team_id", null: false
+    t.integer "member_id", null: false
+    t.integer "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_simple_teams_memberships_on_member_id"
+    t.index ["team_id"], name: "index_simple_teams_memberships_on_team_id"
+  end
+
   create_table "simple_teams_teams", force: :cascade do |t|
     t.string "teamable_type", null: false
     t.integer "teamable_id", null: false
@@ -19,4 +29,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_11_052758) do
     t.index ["teamable_type", "teamable_id"], name: "index_simple_teams_teams_on_teamable"
   end
 
+  add_foreign_key "simple_teams_memberships", "members"
+  add_foreign_key "simple_teams_memberships", "teams"
 end
