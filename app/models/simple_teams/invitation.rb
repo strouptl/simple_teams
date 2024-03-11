@@ -1,7 +1,7 @@
 module SimpleTeams
   class Invitation < ApplicationRecord
     belongs_to :team
-    belongs_to :inviter, :class_name => "User"
+    belongs_to :inviter, :class_name => SimpleTeams.member_class.to_s
     belongs_to :membership, :optional => true
 
     # validations

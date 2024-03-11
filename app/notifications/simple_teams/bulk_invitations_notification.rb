@@ -24,7 +24,7 @@ module SimpleTeams
     end
 
     def user
-      User.find_by(id: params[:user_id])
+      SimpleTeams.member_class.find_by(id: params[:user_id])
     end
 
     # Names (fallback)

@@ -28,7 +28,7 @@ module SimpleTeams
     end
 
     def user
-      @user ||= User.find(user_id)
+      @user ||= SimpleTeams.member_class.find(user_id)
     end
 
     def invitation

@@ -9,13 +9,13 @@ SimpleTeams::Engine.routes.draw do
     resource :leave_team, :only => [:destroy]
   end
 
+  # Autocomplete
+  resources :related_members, :only => [:index] do
+    get "select2", :on => :collection
+  end
+
   # Team Invitations
   get "accept_team_invitation/:id", :as => "accept_team_invitation", to: "teams/accept_invitations#new"
   post "accept_team_invitation/:id", to: "teams/accept_invitations#create"
-
-  # Related Users Autocomplete
-  resources :related_users, :only => [:index] do
-    get "select2", :on => :collection
-  end
 
 end
