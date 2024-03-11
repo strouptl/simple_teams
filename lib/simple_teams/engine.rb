@@ -6,6 +6,7 @@ module SimpleTeams
   mattr_accessor :member_class
   mattr_accessor :parent_controller
   mattr_accessor :layout
+  mattr_accessor :roles
 
   def self.member_class
     (@@member_class || "User").constantize
@@ -17,6 +18,10 @@ module SimpleTeams
 
   def self.layout
     (@@layout || "simple_teams/application")
+  end
+
+  def self.roles
+    (@@roles || [:member, :administrator, :owner])
   end
 
 end

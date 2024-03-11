@@ -4,7 +4,7 @@ module SimpleTeams
     belongs_to :member, :class_name => SimpleTeams.member_class.to_s
     has_one :invitation, :dependent => :nullify
 
-    enum :role, [:member, :administrator, :owner]
+    enum :role, SimpleTeams.roles
 
     validates_presence_of :role
 

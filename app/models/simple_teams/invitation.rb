@@ -21,7 +21,7 @@ module SimpleTeams
     scope :unexpired, -> { where("? <= expires_at", Time.now) }
 
     # enums
-    enum :role, [:member, :administrator, :owner]
+    enum :role, SimpleTeams.roles
     enum :status, [:initial, :accepted, :declined]
 
     def expired?
