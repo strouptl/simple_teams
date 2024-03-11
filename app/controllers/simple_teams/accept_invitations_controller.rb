@@ -11,7 +11,7 @@ module SimpleTeams
     def create
       if params[:commit] == "Decline"
         @invitation.declined!
-        redirect_to root_path, :notice => "You have declined the invitation to the '#{@team.name}' #{@team.teamable.class.model_name.human}."
+        redirect_to main_app.root_path, :notice => "You have declined the invitation to the '#{@team.name}' #{@team.teamable.class.model_name.human}."
       else
         if @service_object.valid?
           @service_object.perform
@@ -25,7 +25,7 @@ module SimpleTeams
             :user_name => current_user.full_name
           ).deliver_later(@team.members)
 
-          redirect_to url_for(@team.teamable), :notice => "You have accepted the invitation to the '#{@team.name}' #{@team.teamable.class.model_name.human}."
+          redirect_to main_app.url_for(@team.teamable), :notice => "You have accepted the invitation to the '#{@team.name}' #{@team.teamable.class.model_name.human}."
         else
           render :new
         end

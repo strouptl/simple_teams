@@ -32,7 +32,7 @@ module SimpleTeams
     end
 
     def invitation
-      @invitation ||= Teams::Invitation.find_by(token: @invitation_token)
+      @invitation ||= Invitation.find_by(token: @invitation_token)
     end
 
     private
