@@ -5,7 +5,7 @@ module SimpleTeams
 
     def destroy
       if @service_object.valid? and @service_object.perform
-        redirect_to root_path, :notice => "You have successfully left the #{@team.name} #{@team.teamable.class.model_name.human}."
+        redirect_to main_app.url_for(@team.teamable.class), :notice => "You have successfully left the #{@team.name} #{@team.teamable.class.model_name.human}."
       else
         redirect_to team_path(@team), :notice => @service_object.errors[:user_id].first
       end
