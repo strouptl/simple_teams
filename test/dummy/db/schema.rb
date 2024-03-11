@@ -46,9 +46,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_11_053607) do
     t.index ["teamable_type", "teamable_id"], name: "index_simple_teams_teams_on_teamable"
   end
 
-  add_foreign_key "simple_teams_invitations", "inviters"
-  add_foreign_key "simple_teams_invitations", "memberships"
-  add_foreign_key "simple_teams_invitations", "teams"
-  add_foreign_key "simple_teams_memberships", "members"
-  add_foreign_key "simple_teams_memberships", "teams"
+  add_foreign_key "simple_teams_invitations", "simple_teams_memberships", column: "membership_id"
+  add_foreign_key "simple_teams_invitations", "simple_teams_teams", column: "team_id"
+  add_foreign_key "simple_teams_invitations", "users", column: "inviter_id"
+  add_foreign_key "simple_teams_memberships", "simple_teams_teams", column: "team_id"
+  add_foreign_key "simple_teams_memberships", "users", column: "member_id"
 end
