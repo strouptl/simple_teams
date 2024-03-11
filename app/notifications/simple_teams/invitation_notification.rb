@@ -39,7 +39,7 @@ module SimpleTeams
     end
 
     def invitation_name
-      invitation.present? ? invitation.email_address : params[:invitation_name]
+      invitation.present? ? invitation.email : params[:invitation_name]
     end
 
     def user_name

@@ -1,20 +1,20 @@
 module SimpleTeams
   class InvitationForms::CreateBulk < ApplicationForm
 
-    attr_accessor :team, :current_user, :single_vs_multiple, :select2_email_addresses, :accessible_email_addresses, :email_addresses, :role
+    attr_accessor :team, :current_user, :single_vs_multiple, :select2_emails, :accessible_emails, :emails, :role
 
     def initialize(team, current_user)
       @team = team
       @current_user = current_user
-      @email_addresses = []
+      @emails = []
     end
 
     def perform(params)
       self.assign_attributes(params)
       if accessible?
-        self.email_addresses = accessible_email_addresses.split(",").map(&:strip).uniq.reject(&:empty?)
+        self.emails = accessible_emails.split(",").map(&:strip).uniq.reject(&:empty?)
       else
-        self.email_addresses = select2_email_addresses.map(&:strip).uniq.reject(&:empty?)
+        self.emails = select2_emails.map(&:strip).uniq.reject(&:empty?)
       end
 
       if valid?
@@ -42,7 +42,7 @@ module SimpleTeams
     end
 
     def address_attribute
-      accessible? ? :accessible_email_addresses : :select2_email_addresses
+      accessible? ? :accessible_emails : :select2_emails
     end
 
     def valid?
@@ -60,25 +60,25 @@ module SimpleTeams
           self.errors.add(a, "can't be blank")
         end
       end
-      unless self.email_addresses.present?
+      unless self.emails.present?
         self.errors.add(address_attribute, "can't be blank")
       end
     end
 
     def validate_invitations
-      email_addresses.each do |email_address|
+      emails.each do |email|
         invitation = Teams::Invitation.new(
           :team => team,
           :inviter => current_user,
           :role => role,
-          :email_address => email_address
+          :email => email
         )
         unless invitation.valid?
-          invitation.errors[:email_address].each do |error|
+          invitation.errors[:email].each do |error|
             if error == "is invalid"
-              error_message = "#{email_address} is not a valid email address"
+              error_message = "#{email} is not a valid email address"
             else
-              error_message = error.gsub("this email address", email_address)
+              error_message = error.gsub("this email address", email)
             end
             self.errors.add(address_attribute, error_message)
           end
@@ -105,12 +105,12 @@ module SimpleTeams
 
     def create_invitations
       ActiveRecord::Base.transaction do
-        email_addresses.each do |email_address|
+        emails.each do |email|
           SimpleTeams::Invitation.create!(
             :team => team,
             :inviter => current_user,
             :role => role,
-            :email_address => email_address
+            :email => email
           )
         end
       end
@@ -122,7 +122,7 @@ module SimpleTeams
         :user_id => current_user.id,
         :team_name => team.name,
         :user_name => current_user.full_name,
-        :invitation_names => self.email_addresses,
+        :invitation_names => self.emails,
       ).deliver_later(team.members)
     end
 

@@ -1,7 +1,7 @@
 module SimpleTeams
   class InvitationForm < ApplicationForm
 
-    attr_accessor :team, :current_user, :invitation, :email_address, :role
+    attr_accessor :team, :current_user, :invitation, :email, :role
 
     def initialize(team, current_user)
       raise NotImplementedError
@@ -20,7 +20,7 @@ module SimpleTeams
 
     # Attributes
     def self.invitation_attributes
-      [:email_address, :role]
+      [:email, :role]
     end
 
     def available_roles

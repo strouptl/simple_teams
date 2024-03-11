@@ -15,7 +15,7 @@ module SimpleTeams
         :invitation_id => invitation.id,
         :user_id => current_user.id,
         :team_name => team.name,
-        :invitation_name => invitation.email_address,
+        :invitation_name => invitation.email,
         :user_name => current_user.full_name
       ).deliver_later(team.members)
     end

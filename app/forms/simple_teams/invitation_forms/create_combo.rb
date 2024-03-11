@@ -1,7 +1,7 @@
 module SimpleTeams
   class InvitationForms::CreateCombo < ApplicationForm
 
-    attr_accessor :team, :current_user, :single_vs_multiple, :email_address, :email_addresses, :select2_email_addresses, :accessible_email_addresses, :role, :form_instance
+    attr_accessor :team, :current_user, :single_vs_multiple, :email, :emails, :select2_emails, :accessible_emails, :role, :form_instance
 
     def initialize(team, current_user)
       @team = team
@@ -21,7 +21,7 @@ module SimpleTeams
       else
         reassign_errors
         unless single?
-          self.email_addresses = form_instance.email_addresses
+          self.emails = form_instance.emails
         end
         false
       end
@@ -60,14 +60,14 @@ module SimpleTeams
 
     def filter_params(params)
       if single?
-        params.except(:single_vs_multiple, :select2_email_addresses, :accessible_email_addresses)
+        params.except(:single_vs_multiple, :select2_emails, :accessible_emails)
       else
-        params.except(:email_address)
+        params.except(:email)
       end
     end
 
     def reassign_errors
-      [:team, :current_user, :email_address, :select2_email_addresses, :accessible_email_addresses, :role].each do |a|
+      [:team, :current_user, :email, :select2_emails, :accessible_emails, :role].each do |a|
         if form_instance.errors[a].present?
           form_instance.errors[a].each do |error|
             self.errors.add(a, error)

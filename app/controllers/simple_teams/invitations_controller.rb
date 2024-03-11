@@ -57,7 +57,7 @@ module SimpleTeams
     def destroy
       authorize! :destroy, @invitation
       invitation_id = @invitation.id
-      invitation_email_address = @invitation.email_address
+      invitation_email = @invitation.email
       @invitation.destroy
 
       SimpleTeams::Invitations::DestroyedNotification.with(
@@ -65,7 +65,7 @@ module SimpleTeams
         :invitation_id => invitation_id,
         :user_id => current_user.id,
         :team_name => @team.name,
-        :invitation_name => invitation_email_address,
+        :invitation_name => invitation_email,
         :user_name => current_user.full_name
       ).deliver_later(@team.members)
 
@@ -78,11 +78,11 @@ module SimpleTeams
     private
 
       def new_service_object_params
-        params.require(:teams_invitation_forms_create_combo).permit(:role, :single_vs_multiple, :email_address, :accessible_email_addresses, :select2_email_addresses => [])
+        params.require(:teams_invitation_forms_create_combo).permit(:role, :single_vs_multiple, :email, :accessible_emails, :select2_emails => [])
       end
 
       def service_object_params
-        params.require(:teams_invitation_forms_update).permit(:email_address, :role)
+        params.require(:teams_invitation_forms_update).permit(:email, :role)
       end
 
       def set_team

@@ -8,7 +8,7 @@ module SimpleTeams
       @invitation_url = accept_team_invitation_url(@invitation.token)
 
       mail(
-        to: (@invitation.email_address),
+        to: (@invitation.email),
         subject: "Invitation to #{@name} #{@resource_name}"
       )
     end
