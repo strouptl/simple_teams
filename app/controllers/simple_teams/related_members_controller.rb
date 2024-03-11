@@ -1,11 +1,11 @@
 module SimpleTeams
-  class RelatedUsersController < ApplicationController
+  class RelatedMembersController < ApplicationController
 
     def index
       if params[:term].present?
         @members = SimpleTeams.member_class
           .joins(:team_memberships, :teams)
-          .where("teams_teams.id" => current_user.teams.pluck(:id))
+          .where("simple_teams_teams.id" => current_user.teams.pluck(:id))
           .where("email ilike ?", "%#{params[:term]}%")
           .order("#{SimpleTeams.member_class.table_name}.first_name")
           .uniq
