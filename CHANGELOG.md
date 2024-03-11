@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.1.4
+Fix issues with Accept/Leave invitation controllers and services;
+
 ## 0.1.3
 Fix naming issues in related members controller, and file location of mailer views;
 
