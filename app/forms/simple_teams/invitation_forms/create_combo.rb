@@ -28,12 +28,7 @@ module SimpleTeams
     end
 
     def available_roles
-      @available_roles ||=
-        if team.child_team?
-          SimpleTeams::Membership.roles.except("owner")
-        else
-          SimpleTeams::Membership.roles
-        end
+      SimpleTeams::Membership.roles
     end
 
     private

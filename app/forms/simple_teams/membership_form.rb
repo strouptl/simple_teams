@@ -32,12 +32,7 @@ module SimpleTeams
     end
 
     def available_roles
-      @available_roles ||=
-        if team.child_team?
-          SimpleTeams::Membership.roles.except("owner")
-        else
-          SimpleTeams::Membership.roles
-        end
+      SimpleTeams::Membership.roles
     end
 
     private
@@ -53,9 +48,7 @@ module SimpleTeams
 
     def validate_not_last_owner
       if membership.owner? and only_one_owner? and role != "owner"
-        unless team.child_team?
-          self.errors.add(:role, "you can't remove the last owner of a team")
-        end
+        self.errors.add(:role, "you can't remove the last owner of a team")
       end
     end
 
