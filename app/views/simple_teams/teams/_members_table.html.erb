@@ -13,13 +13,11 @@
   </thead>
   <tbody>
     <% @memberships_and_invitations.each do |object| %>
-      <% if object.kind_of? Teams::Membership %>
-        <%= render "teams/memberships/membership", :team => @team, :membership => object %>
-      <% elsif object.kind_of? Teams::Invitation %>
-        <%= render "teams/invitations/invitation", :team => @team, :invitation => object %>
+      <% if object.kind_of? SimpleTeams::Membership %>
+        <%= render "simple_teams/memberships/membership", :team => @team, :membership => object %>
+      <% elsif object.kind_of? SimpleTeams::Invitation %>
+        <%= render "simple_teams/invitations/invitation", :team => @team, :invitation => object %>
       <% end %>
     <% end %>
   </tbody>
 </table>
-
-<%= render "teams/role_legend_modal" %>
