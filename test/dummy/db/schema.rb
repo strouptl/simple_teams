@@ -14,7 +14,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_11_053607) do
   create_table "simple_teams_invitations", force: :cascade do |t|
     t.integer "team_id", null: false
     t.integer "inviter_id", null: false
-    t.integer "membership_id", null: false
+    t.integer "membership_id"
     t.string "email", null: false
     t.string "role", default: "0", null: false
     t.string "token", null: false

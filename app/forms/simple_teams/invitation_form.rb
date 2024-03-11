@@ -11,7 +11,7 @@ module SimpleTeams
       self.assign_attributes(params)
 
       if valid?
-        invitation.update(params)
+        invitation.update!(params)
         generate_notification
       else
         false

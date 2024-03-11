@@ -78,11 +78,11 @@ module SimpleTeams
     private
 
       def new_service_object_params
-        params.require(:teams_invitation_forms_create_combo).permit(:role, :single_vs_multiple, :email, :accessible_emails, :select2_emails => [])
+        params.require(:invitation_forms_create_combo).permit(:role, :single_vs_multiple, :email, :accessible_emails, :select2_emails => [])
       end
 
       def service_object_params
-        params.require(:teams_invitation_forms_update).permit(:email, :role)
+        params.require(:invitation_forms_update).permit(:email, :role)
       end
 
       def set_team
