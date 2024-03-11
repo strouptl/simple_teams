@@ -1,25 +1,14 @@
+# WARNING:
+This gem is a work in progress. If you like what we are doing, feel free to watch it for updates, but please do not attempt to use it in production.
+
 # SimpleTeams
-Short description and motivation.
+SimpleTeams is an all-in-one solution for implementing teams quickly in a Ruby on Rails (RoR) application. It follows best practices, using the Rails Engine design pattern for easy configurability, CanCan for authorization, and polymorphic association (like ActiveStorage) to avoid dictating model names.
 
 ## Usage
-How to use my plugin.
+Pending...
 
 ## Installation
-Add this line to your application's Gemfile:
-
-```ruby
-gem "simple_teams"
-```
-
-And then execute:
-```bash
-$ bundle
-```
-
-Or install it yourself as:
-```bash
-$ gem install simple_teams
-```
+Pending...
 
 ## Contributing
 Contribution directions go here.

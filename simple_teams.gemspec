@@ -3,9 +3,9 @@ require_relative "lib/simple_teams/version"
 Gem::Specification.new do |spec|
   spec.name        = "simple_teams"
   spec.version     = SimpleTeams::VERSION
-  spec.authors     = ["Laney Stroup"]
+  spec.authors     = ["Thomas Laney Stroup"]
   spec.email       = ["laney@stroupsolutions.com"]
-  spec.homepage    = "https://github.com/laneystroup/simple_teams"
+  spec.homepage    = "https://github.com/strouptl/simple_teams"
   spec.summary     = "A simple gem for adding teams to a Ruby on Rails application"
   spec.description = "SimpleTeams is an all-in-one solution for implementing teams quickly in a Ruby on Rails (RoR) application. It follows best practices, using the Rails Engine design pattern for easy configurability, CanCan for authorization, and polymorphic association (like ActiveStorage) to avoid dictating model names."
   spec.license     = "MIT"
@@ -15,8 +15,8 @@ Gem::Specification.new do |spec|
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/laneystroup/simple_teams"
-  spec.metadata["changelog_uri"] = "https://github.com/laneystroup/simple_teams/CHANGELOG.md"
+  spec.metadata["source_code_uri"] = "https://github.com/strouptl/simple_teams"
+  spec.metadata["changelog_uri"] = "https://github.com/strouptl/simple_teams/blob/main/CHANGELOG.md"
 
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
     Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
