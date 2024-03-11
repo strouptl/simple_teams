@@ -8,8 +8,8 @@ en:
     labels:
       invitation_forms_create_combo:
         single_vs_multiple: "Single or multiple users"
-        select2_email_addresses: "Email addresses"
-        accessible_email_addresses: "Email addresses"
+        select2_emails: "Email addresses"
+        accessible_emails: "Email addresses"
     options:
       invitation_forms_create_combo:
         single_vs_multiple:

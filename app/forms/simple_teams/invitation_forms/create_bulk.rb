@@ -62,7 +62,7 @@ module SimpleTeams
 
     def validate_invitations
       emails.each do |email|
-        invitation = Teams::Invitation.new(
+        invitation = SimpleTeams::Invitation.new(
           :team => team,
           :inviter => current_user,
           :role => role,
