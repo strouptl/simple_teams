@@ -1,0 +1,18 @@
+en:
+  simple_teams:
+    roles:
+      member: "Can view content"
+      administrator: "Can create and delete content, and invite and remove other members"
+      owner: "Same as administrator, but cannot be removed except by another owner"
+  simple_form:
+    labels:
+      invitation_forms_create_combo:
+        single_vs_multiple: "Single or multiple users"
+        select2_email_addresses: "Email addresses"
+        accessible_email_addresses: "Email addresses"
+    options:
+      invitation_forms_create_combo:
+        single_vs_multiple:
+          single: "Single user"
+          multiple: "Multiple users"
+          accessible: "Multiple users (accessible form)"
