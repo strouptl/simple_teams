@@ -42,7 +42,7 @@ module SimpleTeams
 
     def generate_notification
       recipients = team.members.to_a << user
-      SimpleTeams::Memberships::LeftNotification.with(
+      SimpleTeams::Memberships::LeftNotifier.with(
         :team_id => team.id,
         :member_id => user.id,
         :user_id => user.id,

@@ -32,7 +32,7 @@ module SimpleTeams
 
       @membership.destroy
 
-      SimpleTeams::Memberships::DestroyedNotification.with(
+      SimpleTeams::Memberships::DestroyedNotifier.with(
         :team_id => @team.id,
         :member_id => member_id,
         :user_id => current_user.id,

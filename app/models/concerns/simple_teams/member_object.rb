@@ -5,6 +5,7 @@ module SimpleTeams::MemberObject
     has_many :team_memberships, :class_name => "SimpleTeams::Membership", :foreign_key => :member_id, :dependent => :destroy
     has_many :teams, :through => :team_memberships, :class_name => "SimpleTeams::Team"
     has_many :team_members, :through => :teams, :source => :members, :class_name => SimpleTeams.member_class.to_s
+    has_many :notifications, as: :recipient, :class_name => "Noticed::Notification", dependent: :destroy
   end
 
   def member_of_team?(team)

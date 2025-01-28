@@ -112,7 +112,7 @@ module SimpleTeams
     end
 
     def generate_notification
-      SimpleTeams::BulkInvitationsNotification.with(
+      SimpleTeams::BulkInvitationsNotifier.with(
         :team_id => team.id,
         :user_id => current_user.id,
         :team_name => team.name,

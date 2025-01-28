@@ -60,7 +60,7 @@ module SimpleTeams
       invitation_email = @invitation.email
       @invitation.destroy
 
-      SimpleTeams::Invitations::DestroyedNotification.with(
+      SimpleTeams::Invitations::DestroyedNotifier.with(
         :team_id => @team.id,
         :invitation_id => invitation_id,
         :user_id => current_user.id,

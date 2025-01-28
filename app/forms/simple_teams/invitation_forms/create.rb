@@ -10,7 +10,7 @@ module SimpleTeams
     private
 
     def generate_notification
-      SimpleTeams::Invitations::CreatedNotification.with(
+      SimpleTeams::Invitations::CreatedNotifier.with(
         :team_id => team.id,
         :invitation_id => invitation.id,
         :user_id => current_user.id,

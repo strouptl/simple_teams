@@ -77,7 +77,7 @@ module SimpleTeams
     end
 
     def generate_notification
-      SimpleTeams::Memberships::UpdatedNotification.with(
+      SimpleTeams::Memberships::UpdatedNotifier.with(
         :team_id => team.id,
         :member_id => membership.member.id,
         :user_id => current_user.id,

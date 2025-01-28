@@ -16,7 +16,7 @@ module SimpleTeams
         if @service_object.valid?
           @service_object.perform
 
-          SimpleTeams::Invitations::AcceptedNotification.with(
+          SimpleTeams::Invitations::AcceptedNotifier.with(
             :team_id => @team.id,
             :invitation_id => @invitation.id,
             :user_id => current_user.id,
