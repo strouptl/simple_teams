@@ -14,11 +14,11 @@ module SimpleTeams
       end
 
       can [:update], Team do |team|
-          %w"owner administrator".include? user.role_for_team(team)
+        %w"owner administrator".include? user.role_for_team(team)
       end
 
       can [:destroy], Team do |team|
-          %w"owner".include? user.role_for_team(team)
+        %w"owner".include? user.role_for_team(team)
       end
 
       # Team Memberships/Invitations
