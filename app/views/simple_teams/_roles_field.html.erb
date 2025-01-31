@@ -7,8 +7,8 @@
           <%= radio_button_tag "#{prefix}[role]", name, [name].include?(f.object.role), :class => "form-check-input" %>
           <%= label_tag "#{prefix}_role_#{name}", :class => "form-check-label w-100" do %>
             <div class="">
-              <div class="col"><b><%= name.capitalize %></b></div>
-              <div class="col"><%= t "simple_teams.roles.#{name}" %></div>
+              <div class="col"><b><%= t "simple_teams.role_names.#{name}" %></b></div>
+              <div class="col"><%= t "simple_teams.role_descriptions.#{name}" %></div>
             </div>
           <% end %>
         </div>

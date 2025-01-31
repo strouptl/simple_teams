@@ -1,6 +1,6 @@
 <tr id="<%= dom_id membership %>">
   <td><%= membership.member.full_name %><%= " (you)" if current_user.membership_for_team(team) == membership %></td>
-  <td><%= membership.role.capitalize %></td>
+  <td><%= t "simple_teams.role_names.#{membership.role}" %></td>
   <td>Active</td>
   <td><%= membership.created_at.to_date %></td>
   <td>

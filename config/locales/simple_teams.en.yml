@@ -1,6 +1,10 @@
 en:
   simple_teams:
-    roles:
+    role_names:
+      member: "Member"
+      administrator: "Administrator"
+      owner: "Owner"
+    role_descriptions:
       member: "Can view content"
       administrator: "Can create and delete content, and invite and remove other members"
       owner: "Same as administrator, but cannot be removed except by another owner"

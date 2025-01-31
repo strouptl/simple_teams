@@ -1,6 +1,6 @@
 <tr id="<%= dom_id invitation %>">
   <td><%= invitation.email %></td>
-  <td><%= invitation.role.capitalize %></td>
+  <td><%= t "simple_teams.role_names.#{invitation.role}" %></td>
   <td>Invited</td>
   <td><%= invitation.created_at.to_date %></td>
   <td>
