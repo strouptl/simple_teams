@@ -1,14 +1,15 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to "Teams", teams_path %></li>
-    <li class="breadcrumb-item active" aria-current="page"><%= @team.name %></li>
+    <li class="breadcrumb-item"><%= link_to @team.teamable.class.model_name.human(count: 2), main_app.url_for(@team.teamable.class) %></li>
+    <li class="breadcrumb-item"><%= link_to @team.teamable.name, main_app.url_for(@team.teamable) %></li>
+    <li class="breadcrumb-item active" aria-current="page">Members</li>
   </ol>
 </nav>
 
-<div class="heading-with-dropdown-menu">
-  <h1><%= @team.name %></h1>
+<div class="heading-with-dropdown-menu d-flex justify-content-between">
+  <h1><%= @team.name %> - Members</h1>
 
-  <div class="dropdown">
+  <div class="dropdown mt-2">
     <% if can? :update, @team %>
       <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" id="<%= @team.id %>-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
         Actions
@@ -32,7 +33,5 @@
     <% end %>
   </div>
 </div>
-
-<h2 class="mt-5">Members</h2>
 
 <%= render "members_table" %>

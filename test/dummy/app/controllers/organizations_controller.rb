@@ -24,6 +24,7 @@ class OrganizationsController < ApplicationController
     @organization = Organization.new(organization_params)
 
     if @organization.save
+      SimpleTeams::InitializeTeamService.new(current_user, @organization.team)
       redirect_to @organization, notice: "Organization was successfully created."
     else
       render :new, status: :unprocessable_entity

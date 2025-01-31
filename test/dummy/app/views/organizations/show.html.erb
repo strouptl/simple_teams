@@ -1,10 +1,16 @@
-<p style="color: green"><%= notice %></p>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to Organization.model_name.human(count: 2), url_for(Organization) %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= @organization.name %></li>
+  </ol>
+</nav>
 
 <%= render @organization %>
 
 <div>
   <%= link_to "Edit this organization", edit_organization_path(@organization) %> |
-  <%= link_to "Back to organizations", organizations_path %>
+  <%= link_to "Back to organizations", organizations_path %> |
+  <%= link_to "Team Members", simple_teams.team_path(@organization.team) %>
 
   <%= button_to "Destroy this organization", @organization, method: :delete %>
 </div>

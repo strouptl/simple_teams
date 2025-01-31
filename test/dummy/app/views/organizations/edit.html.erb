@@ -1,3 +1,11 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to Organization.model_name.human(count: 2), url_for(Organization) %></li>
+    <li class="breadcrumb-item"><%= link_to @organization.name, @organization %></li>
+    <li class="breadcrumb-item active" aria-current="page">Editing organization</li>
+  </ol>
+</nav>
+
 <h1>Editing organization</h1>
 
 <%= render "form", organization: @organization %>
