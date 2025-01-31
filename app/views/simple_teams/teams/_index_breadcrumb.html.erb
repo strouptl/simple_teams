@@ -1,0 +1,7 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to @team.teamable.class.model_name.human(count: 2), main_app.url_for(@team.teamable.class) %></li>
+    <li class="breadcrumb-item"><%= link_to @team.teamable.name, main_app.url_for(@team.teamable) %></li>
+    <li class="breadcrumb-item active" aria-current="page">Members</li>
+  </ol>
+</nav>
