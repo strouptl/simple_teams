@@ -1,0 +1,13 @@
+<div class="dropdown mt-2">
+  <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" id="<%= @team.id %>-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
+    Actions
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="<%= @team.id %>-dropdown-menu">
+    <%= link_to "Invite Users", new_team_invitation_path(@team), :class => "dropdown-item" %>
+
+    <% if current_user.membership_for_team(@team).present? %>
+      <li><hr class="dropdown-divider"></li>
+      <%= button_to "Leave", team_leave_team_path(@team), :method => :delete, :class => "btn btn-link dropdown-item", :form => { :data => { "turbo-confirm" => "Are you sure you want to leave this #{ @team.teamable.class.model_name.human }?" } } %>
+    <% end %>
+  </ul>
+</div>

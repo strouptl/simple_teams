@@ -1,31 +1,11 @@
 <%= render "index_breadcrumb" %>
 
 <div class="heading-with-dropdown-menu d-flex justify-content-between">
-  <h1><%= @team.name %> - Members</h1>
+  <h1><%= @team.name %>: Team Members</h1>
 
-  <div class="dropdown mt-2">
-    <% if can? :update, @team %>
-      <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" id="<%= @team.id %>-dropdown-menu" data-bs-toggle="dropdown" aria-expanded="false">
-        Actions
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="<%= @team.id %>-dropdown-menu">
-        <%= link_to "Invite User", new_team_invitation_path(@team), :class => "dropdown-item" %>
-
-        <li><hr class="dropdown-divider"></li>
-        <%= link_to "Edit", edit_team_path(@team), :class => "dropdown-item" %>
-
-        <% if current_user.membership_for_team(@team).present? %>
-          <li><hr class="dropdown-divider"></li>
-          <%= button_to "Leave", team_leave_team_path(@team), :method => :delete, :class => "btn btn-link dropdown-item", :form => { :data => { "turbo-confirm" => "Are you sure you want to leave this #{ @team.teamable.class.model_name.human }?" } } %>
-        <% end %>
-
-        <% if can? :destroy, @team %>
-          <li><hr class="dropdown-divider"></li>
-          <%= button_to "Delete", team_path(@team), :method => :delete, :class => "btn btn-link dropdown-item", :form => { :data => { "turbo-confirm" => "Are you sure you want to delete this #{ @team.teamable.class.model_name.human }?" } } %>
-        <% end %>
-      </ul>
-    <% end %>
-  </div>
+  <%= render "dropdown_menu" %>
 </div>
 
 <%= render "members_table" %>
+
+<%= render "add_member_link" %>
