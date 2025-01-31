@@ -1,6 +1,6 @@
 module SimpleTeams
   class ApplicationMailer < ActionMailer::Base
-    default from: "from@example.com"
+    default from: SimpleTeams.from_address
     layout "mailer"
   end
 end

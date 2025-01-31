@@ -7,6 +7,7 @@ module SimpleTeams
   mattr_accessor :parent_controller
   mattr_accessor :layout
   mattr_accessor :roles
+  mattr_accessor :from_address
 
   def self.member_class
     (@@member_class || "User").constantize
@@ -22,6 +23,10 @@ module SimpleTeams
 
   def self.roles
     (@@roles || [:member, :administrator, :owner])
+  end
+
+  def self.from_address
+    (@@from_address || "please-change-me@example.com")
   end
 
 end
