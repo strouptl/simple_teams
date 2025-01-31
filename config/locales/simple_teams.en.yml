@@ -8,6 +8,15 @@ en:
       member: "Can view content"
       administrator: "Can create and delete content, and invite and remove other members"
       owner: "Same as administrator, but cannot be removed except by another owner"
+    organization:
+      role_names:
+        member: "Member A"
+        administrator: "Member B"
+        owner: "Member C"
+      role_descriptions:
+        member: "Description A"
+        administrator: "Description B"
+        owner: "Description C"
   simple_form:
     labels:
       invitation_forms_create_combo:

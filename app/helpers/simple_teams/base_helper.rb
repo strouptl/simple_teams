@@ -1,5 +1,5 @@
 module SimpleTeams
-  module TeamsHelper
+  module BaseHelper
     def team_based_role_name(team, role)
       t "simple_teams.#{team.teamable.class.to_s.underscore}.role_names.#{role}", :default => [t("simple_teams.role_names.#{role}")]
     end
