@@ -1,22 +1,24 @@
 en:
   simple_teams:
-    role_names:
-      member: "Member"
-      administrator: "Administrator"
-      owner: "Owner"
-    role_descriptions:
-      member: "Can view content"
-      administrator: "Can create and delete content, and invite and remove other members"
-      owner: "Same as administrator, but cannot be removed except by another owner"
-    organization:
-      role_names:
-        member: "Member A"
-        administrator: "Member B"
-        owner: "Member C"
-      role_descriptions:
-        member: "Description A"
-        administrator: "Description B"
-        owner: "Description C"
+    roles:
+      names:
+        member: "Member"
+        administrator: "Administrator"
+        owner: "Owner"
+      descriptions:
+        member: "Can view content"
+        administrator: "Can create and delete content, and invite and remove other members"
+        owner: "Same as administrator, but cannot be removed except by another owner"
+    organizations:
+      roles:
+        names:
+          member: "Member A"
+          administrator: "Member B"
+          owner: "Member C"
+        descriptions:
+          member: "Description A"
+          administrator: "Description B"
+          owner: "Description C"
   simple_form:
     labels:
       invitation_forms_create_combo:
