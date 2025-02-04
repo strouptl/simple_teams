@@ -1,5 +1,16 @@
 # Change Log
 
+## 0.1.6
+- Update default breadrumbs for team views to reference teamable default resourceful routes
+- Add support for team based role name/description via locales;
+- Add installation/usage instructions to README;
+- Replace WARNING with STATUS section in README;
+
+## 0.1.5
+- Upgrade noticed gem to 2.4.1;
+- Add and devise, cancan, simple\_form, and noticed gems to dependencies;
+- Scaffold Organization and User model for test application;
+
 ## 0.1.4
 Fix issues with Accept/Leave invitation controllers and services;
 
