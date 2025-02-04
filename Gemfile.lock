@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    simple_teams (0.1.4)
+    simple_teams (0.1.6)
       cancancan (~> 3.5.0)
       devise (~> 4.8.1)
       noticed (~> 2.4.1)
