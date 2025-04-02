@@ -8,4 +8,6 @@
 
 <%= render "members_table" %>
 
-<%= render "add_member_link" %>
+<% if can? :create, @team.invitations.new %>
+  <%= render "add_member_link" %>
+<% end %>
