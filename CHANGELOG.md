@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.1.7
+- Update teams#show page to hide "Invite Users" links for users who are not authorized to create invitations;
+- Update markdown formatting in README.md;
+- Move old gem releases to "pkg" directory (not tracked);
+
 ## 0.1.6
 - Update default breadrumbs for team views to reference teamable default resourceful routes
 - Add support for team based role name/description via locales;
