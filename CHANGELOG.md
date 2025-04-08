@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.1.8
+- Resolve 500 error for autocomplete for "Multiple Users" option on Invite Users form;
+
 ## 0.1.7
 - Update teams#show page to hide "Invite Users" links for users who are not authorized to create invitations;
 - Update markdown formatting in README.md;
