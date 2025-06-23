@@ -1,7 +1,7 @@
 module SimpleTeams
   class MembershipsController < BaseController
     before_action :set_team
-    before_action :set_membership, :except => [:index]
+    before_action :set_membership
 
     def edit
       authorize! :edit, @membership
