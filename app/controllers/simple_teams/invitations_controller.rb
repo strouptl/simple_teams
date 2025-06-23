@@ -1,7 +1,7 @@
 module SimpleTeams
   class InvitationsController < BaseController
     before_action :set_team
-    before_action :set_invitation, except: %i[ new create index]
+    before_action :set_invitation, except: %i[ new create ]
 
     def new
       authorize! :create, @team.invitations.new
