@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.1.9
+Update gem for Rails 7.1 and 7.2 compatibility:
+- Remove unused actions from controller callbacks;
+- Unpin devise, cancan, and noticed versions;
+
 ## 0.1.8
 - Resolve 500 error for autocomplete for "Multiple Users" option on Invite Users form;
 
