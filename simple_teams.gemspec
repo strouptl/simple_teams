@@ -22,9 +22,9 @@ Gem::Specification.new do |spec|
     Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
   end
 
-  spec.add_dependency "rails", ">= 7.0.7.2"
-  spec.add_dependency "devise", ">= 4.8.1"
-  spec.add_dependency "cancancan", ">= 3.5.0"
-  spec.add_dependency "noticed", ">= 2.4.1"
-  spec.add_dependency "simple_form", ">= 5.1.0"
+  spec.add_dependency "rails", "~> 7.2.0"
+  spec.add_dependency "devise", "~> 4.9.4"
+  spec.add_dependency "cancancan", "~> 3.5.0"
+  spec.add_dependency "noticed", "~> 2.4.3"
+  spec.add_dependency "simple_form", "~> 5.1.0"
 end
