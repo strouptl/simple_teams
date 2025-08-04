@@ -78,7 +78,7 @@ module SimpleTeams
     private
 
       def new_service_object_params
-        params.require(:invitation_forms_create_combo).permit(:role, :single_vs_multiple, :email, :accessible_emails, :select2_emails => [])
+        params.require(:invitation_forms_create_combo).permit(:role, :single_vs_multiple, :email, :email_list)
       end
 
       def service_object_params

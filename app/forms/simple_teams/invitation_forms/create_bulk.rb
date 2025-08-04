@@ -1,7 +1,7 @@
 module SimpleTeams
   class InvitationForms::CreateBulk < ApplicationForm
 
-    attr_accessor :team, :current_user, :single_vs_multiple, :select2_emails, :accessible_emails, :emails, :role
+    attr_accessor :team, :current_user, :single_vs_multiple, :email_list, :emails, :role
 
     def initialize(team, current_user)
       @team = team
@@ -11,11 +11,7 @@ module SimpleTeams
 
     def perform(params)
       self.assign_attributes(params)
-      if accessible?
-        self.emails = accessible_emails.split(",").map(&:strip).uniq.reject(&:empty?)
-      else
-        self.emails = select2_emails.map(&:strip).uniq.reject(&:empty?)
-      end
+      self.emails = email_list.split(",").map(&:strip).uniq.reject(&:empty?)
 
       if valid?
         create_invitations
@@ -31,14 +27,6 @@ module SimpleTeams
     end
 
     private
-
-    def accessible?
-      single_vs_multiple == "accessible"
-    end
-
-    def address_attribute
-      accessible? ? :accessible_emails : :select2_emails
-    end
 
     def valid?
       self.errors.clear
@@ -56,7 +44,7 @@ module SimpleTeams
         end
       end
       unless self.emails.present?
-        self.errors.add(address_attribute, "can't be blank")
+        self.errors.add(:email_list, "can't be blank")
       end
     end
 
@@ -75,7 +63,7 @@ module SimpleTeams
             else
               error_message = error.gsub("this email address", email)
             end
-            self.errors.add(address_attribute, error_message)
+            self.errors.add(:email_list, error_message)
           end
         end
       end

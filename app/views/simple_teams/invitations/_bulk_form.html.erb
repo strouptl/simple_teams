@@ -5,7 +5,7 @@
   <div class="form-inputs">
     <%= f.input :single_vs_multiple,
       :as => :select,
-      :collection => [:single, :multiple, :accessible],
+      :collection => [:single, :multiple],
       :include_blank => false,
       :input_html => {
         "data-togglefields" => "single-vs-multiple"
@@ -21,17 +21,7 @@
     </div>
 
     <div data-togglefields-name="single-vs-multiple" data-togglefields-values='["multiple"]'>
-      <%= f.input :select2_emails,
-        :as => :select,
-        collection: @service_object.emails,
-        :include_blank => false,
-        :error => false,
-        :input_html => {:multiple => true, "data-teams-invitations-field" => "multiple" }
-      %>
-    </div>
-
-    <div data-togglefields-name="single-vs-multiple" data-togglefields-values='["accessible"]'>
-      <%= f.input :accessible_emails,
+      <%= f.input :email_list,
         :error => false,
         :placeholder => "e.g. test1@example.com, test2@example.com",
         :input_html => {"data-teams-invitations-field" => "accessible" },
@@ -43,7 +33,7 @@
       Begin typing to search for members of other projects that you belong to.
     </small>
 
-    <% [:email, :select2_emails, :accessible_emails].each do |a| %>
+    <% [:email, :email_list].each do |a| %>
       <% if @service_object.errors[a].present? %>
         <ul class="invalid-feedback d-block">
           <% @service_object.errors[a].each do |error| %>

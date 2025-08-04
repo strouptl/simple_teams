@@ -10,9 +10,7 @@ SimpleTeams::Engine.routes.draw do
   end
 
   # Autocomplete
-  resources :related_members, :only => [:index] do
-    get "select2", :on => :collection
-  end
+  resources :related_members, :only => [:index]
 
   # Team Invitations
   get "accept_team_invitation/:id", :as => "accept_team_invitation", to: "accept_invitations#new"
